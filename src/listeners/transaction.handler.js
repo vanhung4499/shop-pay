@@ -12,6 +12,7 @@ const handleTransaction = async (message) => {
 
   } catch (error) {
     logger.error(`Error handling order close: ${error}`);
+    throw error;
   }
 };
 

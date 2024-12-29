@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Payment</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Confirm Payment</h1>
+    <form action="/payment/confirm" method="POST">
+        <input type="hidden" name="transactionId" value="<%= transactionId %>">
+        <button type="submit">Confirm Payment</button>
+    </form>
+</div>
+</body>
+</html>

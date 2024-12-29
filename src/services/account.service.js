@@ -1,11 +1,10 @@
 const { Account } = require('../models');
 const { BizError } = require('../common/errors');
 const { ResultCode, RedisKeyConstants} = require('../common/constants');
-const { redis } = require('../config/config');
 const redisClient = require('../config/redis');
 
-const getAccountByBindingUserId = async (userId) => {
-  const account = await Account.findOne({ bindingUserId: userId });
+const getAccountByUserId = async (userId) => {
+  const account = await Account.findOne({ userId });
 
   if (!account) {
     throw new BizError(ResultCode.ACCOUNT_NOT_FOUND);
@@ -80,7 +79,7 @@ const deleteAccountById = async (accountId) => {
 };
 
 module.exports = {
-  getAccountByBindingUserId,
+  getAccountByUserId,
   createAccount,
   getAccountIdByType,
   cacheAccountId,

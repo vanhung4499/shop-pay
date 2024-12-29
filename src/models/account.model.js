@@ -5,7 +5,7 @@ const validator = require('validator');
 
 const AccountSchema = mongoose.Schema(
   {
-    bindingAccountId: {
+    userId: {
       type: String,
     },
     type: {

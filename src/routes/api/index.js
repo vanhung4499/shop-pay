@@ -1,6 +1,6 @@
 const express = require('express');
 
-const paymentRoute = require('./payment.route');
+const transactionRoute = require('./transaction.route');
 const accountRoute = require('./account.route');
 
 const router = express.Router();
@@ -10,7 +10,6 @@ const router = express.Router();
 router.use('/accounts', accountRoute);
 
 // Payment route
-router.use('/payment', paymentRoute);
-
+router.use('/payment', transactionRoute);
 
 module.exports = router;

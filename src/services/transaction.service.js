@@ -32,13 +32,15 @@ const createTransaction = async (transactionForm) => {
     });
     await sendMessage(RabbitMQConstants.TRANSACTION_QUEUE, message);
   }
+
+  return transaction;
 };
 
 const convertFormToTransaction = async (transactionForm) => {
-  const { orderId, amount, accountId, type } = transactionForm;
+  const { orderId, amount, userId, type } = transactionForm;
 
   // Get account binding to user
-  const userAccount = await accountService.getAccountById(accountId);
+  const userAccount = await accountService.getAccountByUserId(userId);
 
   // Get merchant account id
   const merchantAccountId = await accountService.getAccountIdByType(
@@ -101,13 +103,19 @@ const processTransaction = async (transactionId) => {
 
   // Send transaction result to shipping service for order processing
   try {
-    const result = {
+    const data = {
       transactionId: transaction.id,
       orderId: transaction.orderId,
       status: transaction.status,
     }
 
-    await request.post('api/payment/result', result);
+    const result = await request({
+      url: '/api/payment/result',
+      method: 'post',
+      data,
+    });
+
+    return result;
   } catch (error) {
     logger.error(`Error sending transaction result to shopping service: ${error}`);
     throw new BizError(ResultCode.SERVER_ERROR);
