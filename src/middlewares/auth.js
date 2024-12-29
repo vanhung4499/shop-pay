@@ -1,20 +1,15 @@
-const passport = require('passport');
-const httpStatus = require('http-status');
-const AppError = require('../common/errors/app-error');
+const config = require('../config/config');
+const {BizError} = require("../common/errors");
+const {ResultCode} = require("../common/constants");
 
-const auth = (requiredRole) => (req, res, next) => {
-  passport.authenticate('jwt', { session: false }, (err, user, info) => {
-    if (err || !user) {
-      return res.redirect('/login');
-    }
+const auth = () => (req, res, next) => {
+  const apiKey = req.headers['x-api-key'];
 
-    if (requiredRole && user.role !== requiredRole) {
-      return next(new AppError(httpStatus.FORBIDDEN, 'Forbidden'));
-    }
+  if (!apiKey || apiKey !== config.security.apiKey) {
+    return next(new BizError(ResultCode.UNAUTHORIZED));
+  }
 
-    req.user = user;
-    next();
-  })(req, res, next);
+  next();
 };
 
 module.exports = auth;

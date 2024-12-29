@@ -19,63 +19,28 @@ const ResultCode = Object.freeze({
   // --- Business code ---
 
   // User
-  USER_NOT_FOUND: { code: 1010, message: 'User not found' },
+  USER_NOT_FOUND: { code: 10101, message: 'User not found' },
   EMAIL_EXISTS: { code: 10100, message: 'Email already exists' },
   USERNAME_EXISTS: { code: 10102, message: 'Username already exists' },
 
-  // Category
-  CATEGORY_NOT_FOUND: { code: 10200, message: 'Category not found' },
-  CATEGORY_EXISTS: { code: 10201, message: 'Category already exists' },
+  // Account
+  ACCOUNT_NOT_FOUND: { code: 10200, message: 'Account not found' },
+  ACCOUNT_EXISTS: { code: 10201, message: 'Account already exists' },
+  ACCOUNT_BALANCE_INSUFFICIENT: { code: 10202, message: 'Account balance insufficient' },
+  MASTER_ACCOUNT_NOT_FOUND: { code: 10203, message: 'Master account not found' },
+  MERCHANT_ACCOUNT_NOT_FOUND: { code: 10204, message: 'Merchant account not found' },
+  SYSTEM_ACCOUNT_NOT_FOUND: { code: 10205, message: 'System account not found' },
+  CUSTOMER_ACCOUNT_NOT_FOUND: { code: 10206, message: 'Customer account not found' },
+  MERCHANT_BALANCE_INSUFFICIENT: { code: 10207, message: 'Merchant balance insufficient' },
+  CUSTOMER_BALANCE_INSUFFICIENT: { code: 10208, message: 'Customer balance insufficient' },
 
-  // Product
-  PRODUCT_NOT_FOUND: { code: 10300, message: 'Product not found' },
-  PRODUCT_EXISTS: { code: 10301, message: 'Product already exists' },
-  PRODUCT_OUT_OF_STOCK: { code: 10302, message: 'Product out of stock' },
-  PRODUCT_STOCK_INSUFFICIENT: {
-    code: 10303,
-    message: 'Product stock insufficient',
-  },
-
-  // Order
-  ORDER_NOT_FOUND: { code: 10400, message: 'Order not found' },
-  ORDER_CANNOT_CANCEL: {
-    code: 10401,
-    message: 'Order cannot be cancelled after shipped',
-  },
-  ORDER_NOT_BELONG_TO_USER: {
-    code: 10402,
-    message: 'Order does not belong to user',
-  },
-  ORDER_PAYMENT_FAILED: { code: 10403, message: 'Order payment failed' },
-  ORDER_CANNOT_PAY: {
-    code: 10404,
-    message: 'Order has been paid or cancelled',
-  },
-
-  // Cart
-  CART_NOT_FOUND: { code: 10500, message: 'Cart not found' },
-  INVALID_QUANTITY: { code: 10501, message: 'Invalid quantity' },
-  CART_ITEM_NOT_FOUND: { code: 10502, message: 'Cart item not found' },
-
-  // Review
-  REVIEW_NOT_FOUND: { code: 10600, message: 'Review not found' },
-  REVIEW_NOT_BELONG_TO_USER: {
-    code: 10601,
-    message: 'Review does not belong to user',
-  },
-
-  // Banner
-  BANNER_NOT_FOUND: { code: 10700, message: 'Banner not found' },
-
-  // Address
-  ADDRESS_NOT_FOUND: { code: 10800, message: 'Address not found' },
-  ADDRESS_NOT_BELONG_TO_USER: {
-    code: 10801,
-    message: 'Address does not belong to user',
-  },
+  // Transaction
+  TRANSACTION_NOT_FOUND: { code: 10301, message: 'Transaction not found' },
+  TRANSACTION_EXISTS: { code: 10302, message: 'Transaction already exists' },
+  TRANSACTION_TYPE_INVALID: { code: 10303, message: 'Transaction type invalid' },
+  REFUND_TRANSACTION_NOT_SUCCESS: { code: 10304, message: 'Cannot refund transaction not success' },
 
   // Auth
-  PASSWORD_NOT_MATCH: { code: 10900, message: 'Password not match' },
   TOKEN_INVALID: { code: 10901, message: 'Invalid token' },
 
   // --- Infrastructure code ---

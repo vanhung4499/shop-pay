@@ -8,15 +8,10 @@ const envSchema = Joi.object()
     NODE_ENV: Joi.string().valid('production', 'development').required(),
     PORT: Joi.number().default(3000),
     MONGO_URL: Joi.string().required(),
-    JWT_SECRET: Joi.string().required(),
-    JWT_ACCESS_TOKEN_EXPIRES_IN: Joi.number().default(604800), // 7 days
-    JWT_REFRESH_TOKEN_EXPIRES_IN: Joi.number().default(2592000), // 30 days
-    CLOUDINARY_CLOUD_NAME: Joi.string().required(),
-    CLOUDINARY_API_KEY: Joi.string().required(),
-    CLOUDINARY_API_SECRET: Joi.string().required(),
     RABBITMQ_URL: Joi.string().required(),
     REDIS_URL: Joi.string().required(),
-    ORDER_TIMEOUT: Joi.number().default(900), // 15 minutes
+    API_KEY: Joi.string().required(),
+    SHOP_SERVICE_URL: Joi.string().required(),
   })
   .unknown();
 
@@ -35,16 +30,6 @@ module.exports = {
     url: env.MONGO_URL,
     options: {},
   },
-  jwt: {
-    secret: env.JWT_SECRET,
-    accessTokenExpiresIn: env.JWT_ACCESS_TOKEN_EXPIRES_IN,
-    refreshTokenExpiresIn: env.JWT_REFRESH_TOKEN_EXPIRES_IN,
-  },
-  cloudinary: {
-    cloudName: env.CLOUDINARY_CLOUD_NAME,
-    apiKey: env.CLOUDINARY_API_KEY,
-    apiSecret: env.CLOUDINARY_API_SECRET,
-  },
   rabbitmq: {
     url: env.RABBITMQ_URL,
   },
@@ -52,6 +37,11 @@ module.exports = {
     url: env.REDIS_URL,
   },
   business: {
-    orderTimeout: env.ORDER_TIMEOUT,
+  },
+  security: {
+    apiKey: env.API_KEY,
+  },
+  shop: {
+    url: env.SHOP_SERVICE_URL,
   },
 };

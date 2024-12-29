@@ -1,8 +1,10 @@
-# Simple ecommerce project
+# Simple Payment System
 
 ## Description
 
-This is a simple ecommerce project. Built for educational purposes with Node.js, Express.js, MongoDB and EJS.
+This is a simple payment system. Built for educational purposes with Node.js, Express.js, MongoDB and EJS.
+
+This is a sub-system of the simple ecommerce project. It is used to handle payment for orders.
 
 ## Technologies
 
@@ -90,59 +92,12 @@ src
 └── views         # EJS views
 ```
 
-### Routes
 
-I split the routes into 3 main parts:
-
-- `/`: for shop pages like home, products, product detail, cart, checkout, etc.
-- `/admin`: for admin pages like login, dashboard, products, etc.
-- `/api`: for API routes like products, users, etc.
-
-```mermaid
-flowchart LR
-
-U[User] -- Request --> S[Server] --> R[Router] -- / --> Shop[ShopController]
-R -- /admin --> Admin[AdminController]
-R -- /api --> API[ApiController]
-```
-
-### Workflow of a Request
-
-See this diagram to understand the workflow of a request:
-
-```mermaid
-flowchart LR
-
-Route <--> Middleware <--> Controller <--> Service <--> Model <--> Mongodb
-```
-
-1. Route: The request comes to the route, match the route path and transfer to the middleware.
-2. Middleware: Handle the request, validate the request data, etc. Then transfer to the controller. (this is optional)
-3. Controller: Handle the request, call the service to process the business logic.
-4. Service: Process the business logic, call the model to interact with the database.
-5. Model: Interact with the database (MongoDB in this case).
-
-### Web Pages and Admin Dashboard
-
-This project has 2 main parts: shop and admin.
-
-- Shop is a shopping website for customers, they can view products, add products to cart, checkout, etc.
-- Admin is a dashboard for admin, they can manage products, orders, etc.
-
-When users access the website, express will render the EJS views in the `views` folder.
-
-We split the controller to 2 types. Return JSON for API and render EJS views for web pages.
-
-We should limit render the ejs views in the controller. Instead of it, we create more api for the web pages to call by
-ajax and get the data.
-
-> For now, project are in development. We will update more features in the future.
-
-### Development
+## Development
 
 TODO: Deploy the project to a server, maybe use a cloud provider like Heroku, AWS, etc.\
 
-### References
+## References
 
 - [Node.js](https://nodejs.org/)
 - [Express.js](https://expressjs.com/)

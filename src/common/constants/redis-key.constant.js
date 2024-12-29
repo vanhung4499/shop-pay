@@ -1,9 +1,5 @@
 const RedisKeyConstants = {
-  CUSTOMER_CART_PREFIX: 'order:cart:',
-  ORDER_LOCK_PREFIX: 'order:lock:',
-
-  USER_PREFIX: 'user:',
-  REFRESH_TOKEN_PREFIX: 'refreshToken:',
+  ACCOUNT_KEY_PREFIX: 'pay:account:',
 };
 
 module.exports = RedisKeyConstants;

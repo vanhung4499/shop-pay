@@ -2,7 +2,7 @@ const logger = require('../config/logger');
 const { rabbitConnect } = require('../config/rabbitmq');
 
 // Import all consumers
-require('./order-close.handler');
+require('./transaction.handler');
 
 const startConsumers = async () => {
   try {
